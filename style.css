@@ -34,6 +34,28 @@ nav a:hover,
     color: black;
 }
 
+form {
+    width: 20vw;
+    background: #273c75;
+    color: #ffffff;
+    padding: 10px;
+}
+
+.fields {
+    margin: 8px 5px;
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+.label {
+    flex: 30%;
+}
+
+input {
+    padding: 5px 6px;
+}
+
 @media screen and (max-width: 640px) {
     nav {
         flex-direction: column;
