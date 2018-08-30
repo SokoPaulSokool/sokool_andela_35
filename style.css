@@ -28,7 +28,17 @@ nav a {
     border-radius: 8px;
 }
 
-nav a:hover {
+nav a:hover,
+.active {
     background-color: #ddd;
     color: black;
+}
+
+@media screen and (max-width: 640px) {
+    nav {
+        flex-direction: column;
+    }
+    .nav-item {
+        width: 90%;
+    }
 }
