@@ -1,2 +1,3 @@
-# sokool_andela_35
-Andela  level up 35 projects
+# TICKETS
+
+This is a website where anyone can buy tickets for any events around them
