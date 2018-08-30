@@ -35,10 +35,14 @@ nav a:hover,
 }
 
 form {
-    width: 20vw;
+    width: 100%;
     background: #273c75;
     color: #ffffff;
     padding: 10px;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .fields {
@@ -49,18 +53,64 @@ form {
 }
 
 .label {
-    flex: 30%;
+    width: 30%;
 }
 
 input {
     padding: 5px 6px;
 }
 
-@media screen and (max-width: 640px) {
+.hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.hero img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media screen and (max-width: 620px)
+/* Tablet */
+
+{
     nav {
         flex-direction: column;
     }
     .nav-item {
         width: 90%;
+    }
+    .label {
+        width: 50%;
+    }
+    body {
+        background: green;
+    }
+    .hero {
+        flex-direction: column;
+    }
+    form {
+        width: 100%;
+    }
+    .hero img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+@media screen and (min-width:880px) {
+    .hero {
+        flex-direction: row;
+    }
+    form {
+        width: 40%;
+    }
+    .hero img {
+        max-width: 60%;
+        height: auto;
+    }
+    body {
+        background: red;
     }
 }
