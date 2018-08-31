@@ -19,7 +19,7 @@ def registration_checker(name):
     the_user = None
 
     for user in registration_list:
-        if user['name'] == name:
+        if user['name'].lower().find(name.lower()) is not -1:
             the_user = user
             return the_user
         else:
