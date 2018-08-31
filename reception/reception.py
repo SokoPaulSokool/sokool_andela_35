@@ -1,11 +1,11 @@
 import os
-"""Reads the vip list text file and returns a list of registered users
-
-"""
 
 
 def get_vip_list():
-    fpath = os.path.join(os.getcwd()+'\\reception',
+    """Reads the vip list text file and returns a list of registered users
+
+    """
+    fpath = os.path.join(os.getcwd(),
                          'data/vip_list.txt').replace('\\', '/')
     vip_file_data = open(fpath, 'r')
     vip_list = []
@@ -16,13 +16,11 @@ def get_vip_list():
     return vip_list
 
 
-"""Reads the ordinary list text file and returns a list of registered users
-
-"""
-
-
 def get_ordinary_list():
-    fpath = os.path.join(os.getcwd()+'\\reception',
+    """Reads the ordinary list text file and returns a list of registered users
+
+    """
+    fpath = os.path.join(os.getcwd(),
                          'data/ordinary_list.txt').replace('\\', '/')
     ordinary_file_data = open(fpath, 'r')
     ordinary_list = []
@@ -32,3 +30,32 @@ def get_ordinary_list():
                 {"name": name.rstrip('\n'), "category": "ORDINARY"})
     ordinary_file_data.close()
     return ordinary_list
+
+
+def registration_checker(name):
+    """Checks if user is registered or not
+
+    Keyword arguments:
+    name -- name of the person to be checked from registration list
+    the_user -- stores the person's object once name is found in list
+    registration_list -- stores combined list of both ordinary and vip lists
+    Return: returns person's data once found or none once not found
+    """
+    vip_list = get_vip_list()
+    ordinary_list = get_ordinary_list()
+
+    vip_list.extend(ordinary_list)
+    registration_list = vip_list
+
+    the_user = None
+
+    for user in registration_list:
+        if user['name'].lower().find(name.lower()) is not -1:
+            the_user = user
+            return the_user
+        else:
+            the_user = None
+    return the_user
+
+
+print(registration_checker('paul'))
