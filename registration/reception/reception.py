@@ -5,7 +5,8 @@ import os
 
 
 def get_vip_list():
-    fpath = os.path.join('../data/vip_list.txt')
+    fpath = os.path.join(os.getcwd()+'\\reception',
+                         '../data/vip_list.txt').replace('\\', '/')
     vip_file_data = open(fpath, 'r')
     vip_list = []
     for name in vip_file_data.readlines():
