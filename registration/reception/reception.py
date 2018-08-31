@@ -15,15 +15,14 @@ def get_vip_list():
     return vip_list
 
 
-print(get_vip_list())
-
 """Reads the ordinary list text file and returns a list of registered users
 
 """
 
 
 def get_ordinary_list():
-    ordinary_file_data = open('../data/ordinary_list.txt', 'r')
+    fpath = os.path.join('../data/ordinary_list.txt')
+    ordinary_file_data = open(fpath, 'r')
     ordinary_list = []
     for name in ordinary_file_data.readlines():
         if name is not None:
@@ -31,3 +30,6 @@ def get_ordinary_list():
                 {"name": name.rstrip('\n'), "category": "ORDINARY"})
     ordinary_file_data.close()
     return ordinary_list
+
+
+print(get_ordinary_list())
