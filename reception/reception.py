@@ -58,4 +58,9 @@ def registration_checker(name):
     return the_user
 
 
-print(registration_checker('paul'))
+"""Prompt for input"""
+
+print("\n\n\nWELCOME TO EVENTS REGISTRATION\n")
+print("You can check if a person is registered\n")
+name = input("Please enter person's name: ")
+print("\nSearching for  " + str(name) + ' ...')
