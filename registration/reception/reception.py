@@ -22,7 +22,8 @@ def get_vip_list():
 
 
 def get_ordinary_list():
-    fpath = os.path.join('../data/ordinary_list.txt')
+    fpath = os.path.join(os.getcwd()+'\\reception',
+                         '../data/ordinary_list.txt').replace('\\', '/')
     ordinary_file_data = open(fpath, 'r')
     ordinary_list = []
     for name in ordinary_file_data.readlines():
