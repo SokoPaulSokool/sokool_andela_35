@@ -6,3 +6,6 @@ def registration_checker(name):
                 {'name': 'peter', 'category': "VIP"}]
     ordinary_list = [{'name': 'paul', 'category': "ORDINARY"},
                      {'name': 'peter', 'category': "ORDINARY"}]
+    # combines the lists to one list
+    vip_list.extend(ordinary_list)
+    registration_list = vip_list
