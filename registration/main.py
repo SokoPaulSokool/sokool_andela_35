@@ -9,3 +9,15 @@ def registration_checker(name):
     # combines the lists to one list
     vip_list.extend(ordinary_list)
     registration_list = vip_list
+
+    the_user = None
+
+    for user in registration_list:
+        if user['name'] == name:
+            the_user = user
+            return the_user
+        else:
+            the_user = None
+    return the_user
+
+print(registration_checker("paul"))
