@@ -32,6 +32,3 @@ def get_ordinary_list():
                 {"name": name.rstrip('\n'), "category": "ORDINARY"})
     ordinary_file_data.close()
     return ordinary_list
-
-
-print(get_ordinary_list())

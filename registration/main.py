@@ -1,4 +1,4 @@
-
+from reception.reception import get_ordinary_list, get_vip_list
 """Checks if user is registered or not
 
 Keyword arguments:
@@ -10,11 +10,9 @@ Return: returns person's data once found or none once not found
 
 
 def registration_checker(name):
-    vip_list = [{'name': 'paul', 'category': "VIP"},
-                {'name': 'peter', 'category': "VIP"}]
-    ordinary_list = [{'name': 'paul', 'category': "ORDINARY"},
-                     {'name': 'peter', 'category': "ORDINARY"}]
-    
+    vip_list = get_vip_list()
+    ordinary_list = get_ordinary_list()
+
     vip_list.extend(ordinary_list)
     registration_list = vip_list
 
@@ -27,3 +25,6 @@ def registration_checker(name):
         else:
             the_user = None
     return the_user
+
+
+print(registration_checker('paul'))
