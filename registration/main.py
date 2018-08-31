@@ -19,5 +19,3 @@ def registration_checker(name):
         else:
             the_user = None
     return the_user
-
-print(registration_checker("paul"))
