@@ -19,4 +19,14 @@ def get_vip_list():
 
 
 def get_ordinary_list():
-    pass
+    ordinary_file_data = open('../data/ordinary_list.txt', 'r')
+    ordinary_list = []
+    for name in ordinary_file_data.readlines():
+        if name is not None:
+            ordinary_list.append(
+                {"name": name.rstrip('\n'), "category": "ORDINARY"})
+    ordinary_file_data.close()
+    return ordinary_list
+
+
+print(get_ordinary_list())
