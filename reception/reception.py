@@ -52,10 +52,10 @@ def registration_checker(name):
     for user in registration_list:
         if user['name'].lower().find(name.lower()) is not -1:
             the_user = user
-            return the_user
+            return the_user['name']+", " + the_user['category']
         else:
             the_user = None
-    return the_user
+    return 'Not Registered'
 
 
 """Prompt for input"""
@@ -64,3 +64,5 @@ print("\n\n\nWELCOME TO EVENTS REGISTRATION\n")
 print("You can check if a person is registered\n")
 name = input("Please enter person's name: ")
 print("\nSearching for  " + str(name) + ' ...')
+
+print(registration_checker(name))
