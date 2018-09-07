@@ -18,11 +18,11 @@ def add_user():
     if request.method == 'POST':
         data = request.get_json()
         if not data.get('name'):
-            return MessageResponse.send("either name is not set or empty", 200)
+            return MessageResponse.send("either name is not set or empty", 406)
         if not data.get('email'):
-            return MessageResponse.send("either email is not set or empty", 201)
+            return MessageResponse.send("either email is not set or empty", 406)
         if not data.get('password'):
-            return MessageResponse.send("either password is not set or empty", 200)
+            return MessageResponse.send("either password is not set or empty", 406)
 
         name = data.get('name')
         email = data.get('email')
@@ -37,7 +37,7 @@ def add_user():
 def get_user():
     """gets all users"""
     if request.method == 'GET':
-        return jsonify(all_users.get_all_users()), 201
+        return MessageResponse.send(all_users.get_all_users(), 200)
 
 
 @api_users.route('/api/add-user', methods=['DELETE'])
