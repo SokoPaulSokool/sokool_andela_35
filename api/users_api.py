@@ -1,21 +1,43 @@
 from flask import Blueprint, request, jsonify, json
+from api.models.users_model import UserList, User
 
 api_users = Blueprint('users', __name__)
+
+all_users = UserList()
+
+
+class MessageResponse:
+    @staticmethod
+    def send(message, code):
+        return jsonify({"message": message}), code
 
 
 @api_users.route('/api/add-user', methods=['POST'])
 def add_user():
     """adds user to users list"""
     if request.method == 'POST':
-        return "POST", 201
+        data = request.get_json()
+        if not data.get('name'):
+            return MessageResponse.send("either name is not set or empty", 200)
+        if not data.get('email'):
+            return MessageResponse.send("either email is not set or empty", 201)
+        if not data.get('password'):
+            return MessageResponse.send("either password is not set or empty", 200)
+
+        name = data.get('name')
+        email = data.get('email')
+        password = data.get('password')
+        newuser = User(name, email, password)
+        all_users.add_user(newuser)
+        message = "User with name " + newuser.username+" has been created"
+        return MessageResponse.send(message, 201)
 
 
 @api_users.route('/api/get-users', methods=['GET'])
 def get_user():
     """gets all users"""
-
     if request.method == 'GET':
-        return "GET", 201
+        return jsonify(all_users.get_all_users()), 201
 
 
 @api_users.route('/api/add-user', methods=['DELETE'])

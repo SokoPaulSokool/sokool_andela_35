@@ -1,4 +1,5 @@
 from re import match
+from flask import json
 
 
 class User:
@@ -25,10 +26,20 @@ class User:
             return True
         return False
 
+    def toJSON(self):
+        # return json.dumps(self, default=lambda o: o.__dict__)
+        return {"username": self.username, "email": self.email, "password": self.password}
+
 
 class UserList:
     def __init__(self):
         self.list = {}
+
+    def get_all_users(self):
+        all_users = []
+        for the_key, value in self.list.items():
+            all_users.append(value.toJSON())
+        return all_users
 
     def add_user(self, user: User):
         if user.is_valid_user():
