@@ -40,8 +40,13 @@ def get_user():
         return MessageResponse.send(all_users.get_all_users(), 200)
 
 
-@api_users.route('/api/add-user', methods=['DELETE'])
+@api_users.route('/api/delete-user', methods=['DELETE'])
 def delete_user():
     """deletes user from users list"""
     if request.method == 'DELETE':
-        return "DELETE", 201
+        data = request.get_json()
+        if not data.get('email'):
+            return MessageResponse.send("either email is not set or empty", 406)
+
+        email = data.get('email')
+        return MessageResponse.send(all_users.delete_user(email), 201)
