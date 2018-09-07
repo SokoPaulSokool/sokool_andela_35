@@ -28,4 +28,28 @@ class User:
 
 class UserList:
     def __init__(self):
-        self.users_list = []
+        self.list = {}
+
+    def add_user(self, user: User):
+        if user.is_valid_user():
+            if (self.user_exists(user.email)):
+                return "User already exists"
+            self.list[user.email] = user
+            return "success"
+        else:
+            return "invalid user"
+
+    def user_exists(self, email):
+        return self.list.__contains__(email)
+
+    def get_user_by_email(self, email):
+        if (self.user_exists(email)):
+            return self.list[email]
+        return "User does not exist"
+
+    def delete_user(self, email):
+        if (self.user_exists(email)):
+            self.list.pop(email)
+            return "deleted"
+        else:
+            return "User does not exist"
