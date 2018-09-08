@@ -31,7 +31,7 @@ class User:
         return {"username": self.username, "email": self.email, "password": self.password}
 
 
-class UserList:
+class GuestList:
     def __init__(self):
         self.list = {}
 

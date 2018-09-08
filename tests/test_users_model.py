@@ -1,10 +1,10 @@
 import unittest
-from api.models.users_model import User, UserList
+from api.models.users_model import User, GuestList
 
 
 class TestUser(unittest.TestCase):
     def setUp(self):
-        self.list_of_users = UserList()
+        self.list_of_users = GuestList()
         self.user = User('soko', 'sopapaso73@gmail.com', '4321')
 
     def teardown(self):

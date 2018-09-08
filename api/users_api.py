@@ -1,9 +1,9 @@
 from flask import Blueprint, request, jsonify, json
-from api.models.users_model import UserList, User
+from api.models.users_model import GuestList, User
 
 api_users = Blueprint('users', __name__)
 
-all_users = UserList()
+all_users = GuestList()
 
 
 class MessageResponse:
