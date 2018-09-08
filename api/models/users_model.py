@@ -1,11 +1,16 @@
 from re import match
 from flask import json
 
-
-class User:
-    def __init__(self, username, email, password):
+class Person:
+    def __init__(self, username, email):
         self.username = username
         self.email = email
+        
+        
+
+class User(Person):
+    def __init__(self, username, email, password):
+        super().__init__(username,email)
         self.password = password
 
     def is_validName(self):
